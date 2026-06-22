@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anas Munzir | Portfolio</title>
+<meta name="description" content="Portfolio of Anas Munzir Bin Lukman - Computer Science (Data Science) student, developer and data enthusiast." />
+<style>
+  :root{
+    --bg:#0f1226;
+    --bg-soft:#171a35;
+    --card:#1c2042;
+    --card-2:#21264f;
+    --text:#eef1ff;
+    --muted:#a4abce;
+    --accent:#6c8cff;
+    --accent-2:#9b6cff;
+    --line:rgba(255,255,255,.08);
+    --shadow:0 18px 40px rgba(0,0,0,.35);
+    --radius:18px;
+    --maxw:1100px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    background:radial-gradient(1200px 600px at 80% -10%,rgba(108,140,255,.18),transparent 60%),
+               radial-gradient(900px 500px at -10% 10%,rgba(155,108,255,.16),transparent 55%),
+               var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{padding:90px 0}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;
+    color:var(--accent);font-weight:700;margin-bottom:14px;
+  }
+  h2.section-title{font-size:2rem;margin-bottom:8px;letter-spacing:-.01em}
+  .section-sub{color:var(--muted);margin-bottom:42px;max-width:560px}
+
+  /* NAV */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(12px);
+    background:rgba(15,18,38,.72);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{font-weight:800;letter-spacing:.02em;font-size:1.05rem}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex;gap:28px}
+  .nav-links a{color:var(--muted);font-weight:600;font-size:.94rem;transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{
+    padding:9px 18px;border-radius:999px;font-weight:700;font-size:.9rem;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;
+  }
+  .menu-btn{display:none;background:none;border:0;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+  /* HERO */
+  .hero{padding:80px 0 70px}
+  .hero-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:50px;align-items:center}
+  .hero .eyebrow{margin-bottom:18px}
+  .hero h1{font-size:3.3rem;line-height:1.05;letter-spacing:-.02em;margin-bottom:18px}
+  .hero h1 .grad{
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{color:var(--muted);font-size:1.12rem;max-width:520px;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    padding:13px 26px;border-radius:999px;font-weight:700;font-size:.95rem;
+    border:1px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .2s;
+  }
+  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:var(--shadow)}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--text)}
+  .btn:hover{transform:translateY(-2px)}
+  .hero-stats{display:flex;gap:34px;margin-top:38px}
+  .hero-stats .num{font-size:1.7rem;font-weight:800}
+  .hero-stats .lbl{color:var(--muted);font-size:.82rem}
+
+  /* IMAGE FRAME */
+  .photo-frame{
+    position:relative;width:100%;aspect-ratio:4/5;border-radius:24px;
+    background:linear-gradient(135deg,rgba(108,140,255,.18),rgba(155,108,255,.18));
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;box-shadow:var(--shadow);
+  }
+  .photo-frame::after{
+    content:"";position:absolute;inset:0;border-radius:24px;
+    border:2px dashed rgba(255,255,255,.22);margin:14px;pointer-events:none;
+  }
+  .photo-frame img{width:100%;height:100%;object-fit:cover;display:none}
+  .photo-frame.has-image img{display:block}
+  .photo-frame.has-image .ph{display:none}
+  .photo-frame .ph{text-align:center;color:var(--muted);padding:24px}
+  .photo-frame .ph .ico{font-size:2.4rem;display:block;margin-bottom:10px}
+  .photo-frame .ph small{display:block;margin-top:6px;font-size:.74rem;opacity:.8}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .about-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .about-card h3{margin-bottom:10px;font-size:1.15rem}
+  .about-card p{color:var(--muted)}
+  .info-list{list-style:none;margin-top:16px;display:grid;gap:10px}
+  .info-list li{display:flex;gap:10px;color:var(--muted);font-size:.95rem}
+  .info-list b{color:var(--text);min-width:96px;display:inline-block}
+
+  /* SKILLS */
+  .skills{display:flex;flex-wrap:wrap;gap:12px}
+  .chip{
+    padding:10px 18px;border-radius:999px;background:var(--card-2);
+    border:1px solid var(--line);font-weight:600;font-size:.9rem;color:var(--text);
+  }
+
+  /* PROJECTS */
+  .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .project-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .2s,border-color .2s,box-shadow .25s;
+  }
+  .project-card:hover{transform:translateY(-6px);border-color:rgba(108,140,255,.5);box-shadow:var(--shadow)}
+  .project-thumb{
+    position:relative;aspect-ratio:16/10;
+    background:linear-gradient(135deg,rgba(108,140,255,.16),rgba(155,108,255,.16));
+    display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);
+  }
+  .project-thumb::after{
+    content:"";position:absolute;inset:12px;border:2px dashed rgba(255,255,255,.2);border-radius:12px;pointer-events:none;
+  }
+  .project-thumb img{width:100%;height:100%;object-fit:cover;display:none}
+  .project-thumb.has-image img{display:block}
+  .project-thumb.has-image .ph{display:none}
+  .project-thumb .ph{color:var(--muted);font-size:.8rem;text-align:center;z-index:1}
+  .project-thumb .ph .ico{font-size:1.8rem;display:block;margin-bottom:6px}
+  .project-body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .project-body h3{font-size:1.12rem}
+  .project-body p{color:var(--muted);font-size:.92rem;flex:1}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+  .tag{font-size:.74rem;padding:5px 10px;border-radius:7px;background:var(--card-2);color:var(--muted);border:1px solid var(--line)}
+  .project-links{display:flex;gap:16px;margin-top:8px}
+  .project-links a{font-size:.86rem;font-weight:700;color:var(--accent)}
+  .project-links a:hover{text-decoration:underline}
+
+  /* ADD PROJECT CARD */
+  .add-card{
+    border:2px dashed var(--line);background:transparent;border-radius:var(--radius);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;color:var(--muted);padding:30px;min-height:230px;
+    transition:border-color .2s,color .2s;cursor:pointer;
+  }
+  .add-card:hover{border-color:var(--accent);color:var(--text)}
+  .add-card .plus{font-size:2.6rem;line-height:1;margin-bottom:10px}
+  .add-card small{font-size:.78rem;max-width:200px;margin-top:8px;opacity:.85}
+
+  /* CONTACT */
+  .contact{text-align:center}
+  .contact .section-sub{margin:0 auto 36px}
+  .contact-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .contact-links a{
+    padding:13px 24px;border-radius:12px;background:var(--card);border:1px solid var(--line);
+    font-weight:600;transition:transform .15s,border-color .2s;
+  }
+  .contact-links a:hover{transform:translateY(-3px);border-color:var(--accent)}
+
+  footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:.86rem}
+
+  /* RESPONSIVE */
+  @media (max-width:880px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero h1{font-size:2.5rem}
+    .photo-frame{max-width:320px;margin:0 auto}
+    .about-grid{grid-template-columns:1fr}
+    .projects-grid{grid-template-columns:repeat(2,1fr)}
+    .nav-links{display:none}
+    .menu-btn{display:block}
+  }
+  @media (max-width:560px){
+    .projects-grid{grid-template-columns:1fr}
+    .hero-stats{gap:22px}
+    section{padding:64px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">Anas<span>.</span></div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Computer Science / Data Science Student</div>
+      <h1>Hi, I'm <span class="grad">Anas Munzir</span><br/>I build &amp; analyse with data.</h1>
+      <p class="lead">Final-year Data Science undergraduate at UKM passionate about full-stack development, data analysis, and turning messy data into clear, useful insights.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="num">3.72</div><div class="lbl">CGPA</div></div>
+        <div><div class="num">3+</div><div class="lbl">Internships &amp; Roles</div></div>
+        <div><div class="num">5+</div><div class="lbl">Projects</div></div>
+      </div>
+    </div>
+    <!-- PROFILE IMAGE FRAME: replace src below and add class 'has-image' to show your photo -->
+    <div class="photo-frame" id="profileFrame">
+      <img src="images/profile.jpg" alt="Anas Munzir" />
+      <div class="ph">
+        <span class="ico">🖼️</span>
+        Your photo goes here
+        <small>Add a file at images/profile.jpg, then add class "has-image" to this frame</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h2 class="section-title">A little about me</h2>
+    <p class="section-sub">Curious, detail-oriented, and always learning.</p>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Who I am</h3>
+        <p>I'm a final-year Computer Science (Data Science) student at the National University of Malaysia (UKM). I enjoy building full-stack web applications, cleaning and analysing data, and automating repetitive tasks with Python. I love work that turns raw information into something genuinely useful.</p>
+      </div>
+      <div class="about-card">
+        <h3>Quick facts</h3>
+        <ul class="info-list">
+          <li><b>Location</b> Dengkil, Selangor, Malaysia</li>
+          <li><b>Education</b> BCS Data Science (Hons), UKM</li>
+          <li><b>Focus</b> Web Dev, Data Analysis, Automation</li>
+          <li><b>Email</b> anaslukman03@gmail.com</li>
+          <li><b>Status</b> Open to internships (Aug 2026)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SKILLS ===================== -->
+<section id="skills" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="eyebrow">Skills</div>
+    <h2 class="section-title">What I work with</h2>
+    <p class="section-sub">Tools and technologies I use to build and analyse.</p>
+    <div class="skills">
+      <span class="chip">Python</span>
+      <span class="chip">SQL</span>
+      <span class="chip">JavaScript</span>
+      <span class="chip">PHP</span>
+      <span class="chip">HTML &amp; CSS</span>
+      <span class="chip">Bootstrap 5</span>
+      <span class="chip">MySQL</span>
+      <span class="chip">Pandas &amp; NumPy</span>
+      <span class="chip">Matplotlib &amp; Seaborn</span>
+      <span class="chip">Power BI (Basic)</span>
+      <span class="chip">Git &amp; GitHub</span>
+      <span class="chip">Data Cleaning</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROJECTS ===================== -->
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">Portfolio</div>
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-sub">A few things I've built. Each card has an image frame &mdash; drop an image in the images/ folder and add the class "has-image" to its thumb to show it.</p>
+    <div class="projects-grid">
+
+      <!-- ===== PROJECT CARD (copy this whole block to add a new project) ===== -->
+      <article class="project-card">
+        <div class="project-thumb"><!-- add class "has-image" once you set the src -->
+          <img src="images/project1.jpg" alt="FTSMDocsHub" />
+          <div class="ph"><span class="ico">🖼️</span>Add project image<br/>images/project1.jpg</div>
+        </div>
+        <div class="project-body">
+          <h3>FTSMDocsHub</h3>
+          <p>A full-stack web app to manage academic documents with a centralized database, role-based access, dashboards, and approval workflows. (Final Year Project)</p>
+          <div class="tags">
+            <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap 5</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank">Live Demo →</a>
+            <a href="https://github.com/anaslukman03" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </article>
+      <!-- ===== END PROJECT CARD ===== -->
+
+      <article class="project-card">
+        <div class="project-thumb">
+          <img src="images/project2.jpg" alt="Amazon Earphones Analysis" />
+          <div class="ph"><span class="ico">🖼️</span>Add project image<br/>images/project2.jpg</div>
+        </div>
+        <div class="project-body">
+          <h3>Amazon Earphones Data Analysis</h3>
+          <p>Python scripts that scrape, clean, and visualise product data &mdash; refining 118 raw records into 53 reliable entries and charting pricing &amp; discount trends.</p>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/anaslukman03" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ADD-PROJECT PLACEHOLDER: copy a project card above to replace this -->
+      <div class="add-card" onclick="alert('To add a project: open index.html and copy a project-card block, then edit the title, description, tags and image.');">
+        <div class="plus">+</div>
+        <strong>Add another project</strong>
+        <small>Copy a project card block in the HTML and edit its details &amp; image.</small>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" class="contact" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h2 class="section-title">Let's work together</h2>
+    <p class="section-sub">I'm open to internship opportunities and collaborations. Feel free to reach out!</p>
+    <div class="contact-links">
+      <a href="mailto:anaslukman03@gmail.com">✉️ Email</a>
+      <a href="https://www.linkedin.com/in/anas-munzir-455405295/" target="_blank">in LinkedIn</a>
+      <a href="https://github.com/anaslukman03" target="_blank">⌨ GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> Anas Munzir Bin Lukman. Built with HTML &amp; CSS.</div>
+</footer>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
